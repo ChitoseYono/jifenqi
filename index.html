@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/pure-min.css">
+		<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
+		<link rel="stylesheet" href="css/my.css">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<title>锄大地计分器</title>
+	</head>
+	<body>
+
+		<style scoped>
+			.button-secondary {
+            background: rgb(66, 184, 221); /* this is a light blue */
+        }
+
+    </style>
+
+		<div class="header">
+			<h1>锄大地计分器</h1>
+		</div>
+
+		<div id="init">
+			<br>
+			<form class="pure-form" id="names" onsubmit="false">
+				<fieldset class="pure-group">
+					<label for="name1">玩家一姓名</label>
+					<input type="text" id="name1" class="pure-input-1-2" placeholder="玩家一姓名" required>
+					<label for="name2">玩家二姓名</label>
+					<input type="text" id="name2" class="pure-input-1-2" placeholder="玩家二姓名" required>
+					<label for="name3">玩家三姓名</label>
+					<input type="text" id="name3" class="pure-input-1-2" placeholder="玩家三姓名" required>
+					<label for="name4">玩家四姓名</label>
+					<input type="text" id="name4" class="pure-input-1-2" placeholder="玩家四姓名" required>
+				</fieldset>
+			</form>
+			<div class="btm"><a class="button-secondary pure-button" id="start" style="color: white">开始计分</a></div>
+			<br><center>请输入玩家姓名后开始游戏积分。</center>
+		</div>
+
+		<div id="game">
+			<table id="tab" class="pure-table" width="100%">
+				<thead>
+					<tr>
+						<th width="20%">局数</th>
+						<th width="20%" id="player1"></th>
+						<th width="20%" id="player2"></th>
+						<th width="20%" id="player3"></th>
+						<th width="20%" id="player4"></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr id="operationrow">
+						<!--        <tr class="pure-table-odd"> -->
+						<td id="no">1</td>
+						<td><input id="pointplayer1" /></td>
+						<td><input id="pointplayer2" /></td>
+						<td><input id="pointplayer3" /></td>
+						<td><input id="pointplayer4" /></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<div class="ins">使用说明：
+			<br>1.完成当前一局后再进行下一局或结算。
+			<br>2.输入各玩家对应所剩手牌数即可，系统自动运算积分。
+			</div>
+			
+
+			<div class="btm">
+				<a class="pure-button" id="add">下一局
+				<a class="button-secondary pure-button" id="finish" style="color: white">结算</a>
+			</div>
+
+			<script type="text/javascript" src="js/logic.js" />
+
+		</div>
+	</body>
+</html>
