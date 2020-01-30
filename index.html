@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="css/pure-min.css">
 		<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 		<link rel="stylesheet" href="css/my.css">
+		<link rel="modulepreload" href="js/logic.js">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
 		<title>锄大地计分器</title>
 	</head>
@@ -16,6 +17,8 @@
         }
 
     </style>
+
+
 
 		<div class="header">
 			<h1>锄大地计分器</h1>
@@ -36,7 +39,8 @@
 				</fieldset>
 			</form>
 			<div class="btm"><a class="button-secondary pure-button" id="start" style="color: white">开始计分</a></div>
-			<br><center>请输入玩家姓名后开始游戏积分。</center>
+			<br>
+			<center>请输入玩家姓名后开始游戏积分。</center>
 		</div>
 
 		<div id="game">
@@ -62,20 +66,18 @@
 					</tr>
 				</tbody>
 			</table>
-			
+
 			<div class="ins">使用说明：
-			<br>1.完成当前一局后再进行下一局或结算。
-			<br>2.输入各玩家对应所剩手牌数即可，系统自动运算积分。
+				<br>1.完成当前一局后再进行下一局或结算。
+				<br>2.输入各玩家对应所剩手牌数即可，系统自动运算积分。
 			</div>
-			
+
 
 			<div class="btm">
 				<a class="pure-button" id="add">下一局
-				<a class="button-secondary pure-button" id="finish" style="color: white">结算</a>
+					<a class="button-secondary pure-button" id="finish" style="color: white">结算</a>
 			</div>
-
-			<script type="text/javascript" src="js/logic.js" />
-
 		</div>
-	</body>
+		<script type="text/javascript" src="js/logic.js" />
+		</body>
 </html>
