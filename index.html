@@ -70,6 +70,7 @@
 			<div class="ins">使用说明：
 				<br>1.完成当前一局后再进行下一局或结算，若加多了一局直接输入0000即可。
 				<br>2.输入各玩家对应所剩手牌数即可，系统自动运算积分。
+				<br>3.结束后自动刷新重开，无法刷新请退出再进。
 			</div>
 
 
@@ -216,7 +217,7 @@
 					alert("请进行游戏后再结算！");
 					return;
 				}
-				
+
 				if (tmp1 > 13 || tmp1 < 0) {
 					alert("分数有误，请重输！");
 					return;
@@ -263,41 +264,58 @@
 				sum2 = sum2 + tmp2;
 				sum3 = sum3 + tmp3;
 				sum4 = sum4 + tmp4;
-				// 	var tr = document.createElement('tr');
-				// 	var td0 = document.createElement('td');
-				// 	var td1 = document.createElement('td');
-				// 	var td2 = document.createElement('td');
-				// 	var td3 = document.createElement('td');
-				// 	var td4 = document.createElement('td');
-				// td0.innerHTML = "结算";
+				
+				//重置
+				no.innerHTML = "结算";
+				point1.value = sum1;
+				point1.disabled = true;
+				point2.value = sum2;
+				point2.disabled = true;
+				point3.value = sum3;
+				point3.disabled = true;
+				point4.value = sum4;
+				point4.disabled = true;
+				btn1.setAttribute('disabled', 'disabled');
+				btn2.setAttribute('disabled', 'disabled');
 
 				//结算初始化
 				var won = [0, 0, 0, 0];
-				var flag = 0;
-
+				var flag = [0, 0, 0, 0];
 				var values = [sum1, sum2, sum3, sum4];
 				values.sort(function(value1, value2) {
 					return value1 - value2;
 				});
 
-				//玩家得分排序
+				//玩家得分排序，同分问题处理
 				order = [0, 0, 0, 0]
 				tmp = 0;
 				for (var i = 0; i < 4; i++) {
 					val = values[i];
 					switch (val) {
 						case sum1:
-							order[tmp] = 1;
-							break;
+							if (!flag[0]) {
+								order[tmp] = 1;
+								flag[0] = 1;
+								break;
+							}
 						case sum2:
-							order[tmp] = 2;
-							break;
+							if (!flag[1]) {
+								order[tmp] = 2;
+								flag[1] = 1;
+								break;
+							}
 						case sum3:
-							order[tmp] = 3;
-							break;
+							if (!flag[2]) {
+								order[tmp] = 3;
+								flag[2] = 1;
+								break;
+							}
 						case sum4:
-							order[tmp] = 4;
-							break;
+							if (!flag[3]) {
+								order[tmp] = 4;
+								flag[3] = 1;
+								break;
+							}
 						default:
 							break;
 					}
@@ -312,18 +330,14 @@
 						won[j] -= values[j];
 					}
 				}
-				// 	no.innerText = "";
-				// 	point1.value = "";
-				// 	point2.value = "";
-				// 	point3.value = "";
-				// 	point4.value = "";
+
 				alert("第一名玩家" + document.getElementById("player" + order[0]).innerText + "得分为" + won[0] + "\n" +
 					"第二名玩家" + document.getElementById("player" + order[1]).innerText + "得分为" + won[1] + "\n" +
 					"第三名玩家" + document.getElementById("player" + order[2]).innerText + "得分为" + won[2] + "\n" +
 					"第四名玩家" + document.getElementById("player" + order[3]).innerText + "得分为" + won[3] + "\n" +
 					"点确定重新游戏");
 
-				location.reload();
+				// location.reload();
 			}
 		</script>
 		<!-- 		<script type="text/javascript" src="js/logic.js" /> -->
